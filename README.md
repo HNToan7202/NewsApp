@@ -16,7 +16,9 @@ b. Trang chi tiết bài viết:
 - Coroutine
 4. Giao diện
   a. Giao diện danh sách tin tức
-<img width="379" alt="image" src="https://github.com/user-attachments/assets/945661a6-2bf2-45e4-9858-297b2aada163" />
+
+![Screenshot_20250524_100928](https://github.com/user-attachments/assets/88c41aa7-f746-42af-aaf2-b4ea6f226477)
 
   b. Giao diện chi tiết bài viết
-<img width="381" alt="image" src="https://github.com/user-attachments/assets/d626190d-7810-4d18-a634-e97203924a94" />
+
+![Screenshot_20250524_100940](https://github.com/user-attachments/assets/f6ae092e-2959-4cfb-b4a9-c7909579d3e7)

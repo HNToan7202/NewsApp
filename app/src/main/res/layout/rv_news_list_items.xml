@@ -1,87 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clNews"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_small"
-    android:orientation="horizontal">
+    android:padding="4dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvGradient"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="@dimen/margin_xsmall"
-        app:cardElevation="0dp">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivNews"
+        android:layout_width="137dp"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="10dp"
+        app:shapeAppearanceOverlay="@style/ImageRoundedCorner" />
 
-        <ImageView
-            android:id="@+id/ivNews"
-            android:layout_width="137dp"
-            android:layout_height="140dp"
-            android:scaleType="fitCenter" />
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_toEndOf="@id/ivNews"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_xsmall"
+        android:fontFamily="@font/robotoslab_regular"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_medium" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_xsmall"
-            android:elevation="@dimen/margin_xsmall"
-            android:fontFamily="@font/robotoslab_regular"
-            android:maxLines="2"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_medium" />
+    <TextView
+        android:id="@+id/tvChannel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_toEndOf="@id/ivNews"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/text_xsmall" />
 
-        <TextView
-            android:id="@+id/tvChannel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:elevation="@dimen/margin_xsmall"
-            android:fontFamily="@font/robotoslab_regular"
-            android:textColor="@color/colorGrey"
-            android:textSize="@dimen/text_xsmall" />
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvChannel"
+        android:layout_toEndOf="@id/ivNews"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textColor="@color/colorBlueCyan"
+        android:textSize="@dimen/text_xsmall" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tvType"
+        android:layout_toEndOf="@id/tvType"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textColor="@color/colorGrey"
+        android:textSize="@dimen/text_xsmall" />
 
-            <TextView
-                android:id="@+id/tvType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:elevation="@dimen/margin_xsmall"
-                android:fontFamily="@font/robotoslab_regular"
-                android:textColor="@color/colorBlueCyan"
-                android:textSize="@dimen/text_xsmall" />
-
-            <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:elevation="@dimen/margin_xsmall"
-                android:fontFamily="@font/robotoslab_regular"
-                android:textColor="@color/colorGrey"
-                android:textSize="@dimen/text_xsmall" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

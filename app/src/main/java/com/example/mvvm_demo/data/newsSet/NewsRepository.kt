@@ -1,14 +1,18 @@
 package com.example.mvvm_demo.data.newsSet
 
+import android.content.Context
 import androidx.annotation.OpenForTesting
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.switchMap
-import androidx.paging.LivePagedListBuilder
-import com.example.mvvm_demo.api.Data
-import com.example.mvvm_demo.api.NetworkState
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.example.mvvm_demo.api.NewsApi
 import com.example.mvvm_demo.api.NewsListModel
+import com.example.mvvm_demo.common.PAGE_SIZE
+import com.example.mvvm_demo.common.apiKey
+import com.example.mvvm_demo.commonUtil.ConnectivityUtil
 import com.example.mvvm_demo.data.dao.NewsDao
-import kotlinx.coroutines.CoroutineScope
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,45 +20,32 @@ import javax.inject.Singleton
 @OpenForTesting
 class NewsRepository @Inject constructor(
     private val newsDao: NewsDao,
-    private val newsRemoteDataSource: NewsRemoteDataSource
+    private val newsRemoteDataSource: NewsRemoteDataSource,
+    @ApplicationContext private val context: Context
 ) {
-
-    fun observePagedNews(connectivityAvailable: Boolean, coroutineScope: CoroutineScope)
-            : Data<NewsListModel> {
-
-        return if (connectivityAvailable)
-            observeRemotePagedNews(coroutineScope)
+    fun observePagedNews()
+            : Flow<PagingData<NewsListModel>> {
+        val isOnline = ConnectivityUtil.isConnected(context)
+        return if (isOnline)
+            observeRemotePagedNews()
         else observeLocalPagedNews()
     }
 
-    private fun observeLocalPagedNews(): Data<NewsListModel> {
-
-        val dataSourceFactory = newsDao.getPagedNews()
-
-        val createLD = MutableLiveData<NetworkState>()
-        createLD.postValue(NetworkState.LOADED)
-
-        return Data(
-            LivePagedListBuilder(
-                dataSourceFactory,
-                NewsPageDataSourceFactory.Companion.pagedListConfig()
-            ).build(), createLD
-        )
+    private fun observeLocalPagedNews(): Flow<PagingData<NewsListModel>> {
+        return Pager(
+            config = PagingConfig(pageSize = PAGE_SIZE),
+            pagingSourceFactory = {
+                newsDao.getPagedNews()
+            }
+        ).flow
     }
 
-    private fun observeRemotePagedNews(ioCoroutineScope: CoroutineScope): Data<NewsListModel> {
-        val dataSourceFactory = NewsPageDataSourceFactory(
-            newsRemoteDataSource,
-            newsDao, ioCoroutineScope
-        )
-        val networkState = dataSourceFactory.liveData.switchMap {
-            it.networkState
-        }
-        return Data(
-            LivePagedListBuilder(
-                dataSourceFactory,
-                NewsPageDataSourceFactory.Companion.pagedListConfig()
-            ).build(), networkState
-        )
+    private fun observeRemotePagedNews(): Flow<PagingData<NewsListModel>> {
+        return Pager(
+            config = PagingConfig(PAGE_SIZE),
+            pagingSourceFactory = {
+                NewsRemotePagingSource(newsRemoteDataSource, apiKey, PAGE_SIZE)
+            }
+        ).flow
     }
 }

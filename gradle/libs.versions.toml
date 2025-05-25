@@ -22,8 +22,10 @@ ktx = "1.10.1"
 lifecycle = "2.6.1"
 material = "1.0.0"
 navigation = "2.7.1"
+pagingCommonKtx = "3.3.6"
 recyclerview = "1.1.0-alpha05"
 room = "2.7.1"
+roomPaging = "2.7.1"
 work = "2.7.1"
 paging = "2.1.0"
 gson = "2.8.2"
@@ -55,6 +57,8 @@ activity = "1.10.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-paging-common-ktx = { module = "androidx.paging:paging-common-ktx", version.ref = "pagingCommonKtx" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

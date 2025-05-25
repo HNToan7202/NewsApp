@@ -128,6 +128,7 @@ dependencies {
 
     testImplementation(libs.mockito.core)
     androidTestImplementation(libs.mockito.android)
-
+    implementation(libs.androidx.paging.common.ktx)
+    implementation(libs.androidx.room.paging)
 
 }

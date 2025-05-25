@@ -28,4 +28,9 @@
 
     <style name="Theme.NewsApp" parent="Theme.AppCompat.Light.NoActionBar" />
 
+    <style name="ImageRoundedCorner" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>

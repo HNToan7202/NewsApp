@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,7 +15,7 @@ import com.example.mvvm_demo.databinding.RvNewsListItemsBinding
 /**
  * Adapter for the [RecyclerView] in [NewsFragment].
  */
-class NewsAdapter : PagedListAdapter<NewsListModel, NewsAdapter.ViewHolder>(DiffCallback()) {
+class NewsAdapter : PagingDataAdapter<NewsListModel, NewsAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val newsItem = getItem(position)

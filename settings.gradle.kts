@@ -13,6 +13,7 @@ pluginManagement {
 
     plugins {
         id("androidx.navigation.safeargs.kotlin") version "2.9.0"
+        id("com.google.devtools.ksp") version "2.0.21-1.0.25" // Thêm dòng này
     }
 }
 dependencyResolutionManagement {

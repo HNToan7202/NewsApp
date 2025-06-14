@@ -1,77 +1,63 @@
 package com.example.mvvm_demo.ui.news
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.paging.PagingData
-import com.example.mvvm_demo.api.NewsListModel
-import com.example.mvvm_demo.api.UIState
-import com.example.mvvm_demo.databinding.FragmentNewsListBinding
-import com.example.mvvm_demo.commonUtil.ConnectivityUtil
+import android.widget.Button
+import com.example.mvvm_demo.presentation.main.MainActivity
+import com.example.mvvm_demo.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class NewsListFragment : Fragment() {
-    private var isConnected: Boolean = true
-    private lateinit var binding: FragmentNewsListBinding
-    private var _binding: FragmentNewsListBinding? = null
-    val newsViewModel: NewsViewModel by viewModels()
+
+    private var btnClickMe: Button? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNewsListBinding.inflate(inflater, container, false)
-        context ?: return binding.root
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_news_list, container, false)
     }
 
+    //khởi tạo dữ liệu, gọi findById
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        isConnected = ConnectivityUtil.isConnected(context)
-        if (!isConnected)
-            Toast.makeText(
-                context?.applicationContext,
-                "No internet connection!",
-                Toast.LENGTH_SHORT
-            ).show()
+        //muốn gọi activity cha, sau đó ép kiểu về activity mà chúng ta muốn
+        //bị lỗi khi activity ép về bị bull
+        //as? trong trường hợp ép kiểu thất bại thiì kết quả trả về null
 
-        val adapter = NewsAdapter()
-        binding.rvNewsList.adapter = adapter
-        subscribeUI(adapter)
+//        (activity as MainActivity).toastUtil("hihi toan")
+
+
+        btnClickMe = view.findViewById<Button>(R.id.btnClickMe)
+        btnClickMe?.setOnClickListener {
+            (activity as? MainActivity)?.toastUtil("hihi toan")
+        }
+
+        val text = arguments?.getString("key01", "")
+        btnClickMe?.text = text
     }
 
-    private fun subscribeUI(adapter: NewsAdapter) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                newsViewModel.uiState.collectLatest { state ->
-                    when (state) {
-                        is UIState.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                        }
+    companion object {
+        //viết cac key, hằng số
+        const val NAME = "Nguyen Hoang Toan"
+        fun newFragment(data: String): NewsListFragment {
+            val fragment = NewsListFragment()
+            val bundle = Bundle()
 
-                        is UIState.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
-                        }
+            bundle.putString("key01", data)
+            bundle.putString("key01", data)
 
-                        is UIState.Success<PagingData<NewsListModel>> -> {
-                            binding.progressBar.visibility = View.GONE
-                            adapter.submitData(state.data)
-                        }
-                    }
-                }
-            }
+            fragment.arguments = bundle
+            return fragment
         }
     }
+
 }

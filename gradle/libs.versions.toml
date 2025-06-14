@@ -48,6 +48,8 @@ testcore = "1.1.0"
 testrunner = "1.1.1"
 testrules = "1.1.1"
 activity = "1.10.1"
+navigationFragmentKtx = "2.9.0"
+navigationUiKtx = "2.9.0"
 
 
 
@@ -108,6 +110,8 @@ mockito-android = { group = "org.mockito", name = "mockito-android", version.ref
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
 
 [plugins]

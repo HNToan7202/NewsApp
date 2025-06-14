@@ -1,49 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.news.NewsListFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/appbar"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="Fragment 1" />
 
-        <TextView
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/robotoslab_bold"
-            android:gravity="center"
-            android:letterSpacing=".1"
-            android:text="@string/headlines"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_large" />
-    </androidx.appcompat.widget.Toolbar>
-
-    <FrameLayout
+    <Button
+        android:id="@+id/btnClickMe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="50dp"
+        android:text="Click me" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNewsList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/rv_news_list_items" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="16dp" />
-
-    </FrameLayout>
 </LinearLayout>

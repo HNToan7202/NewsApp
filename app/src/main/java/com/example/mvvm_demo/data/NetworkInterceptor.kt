@@ -1,6 +1,7 @@
 package com.example.mvvm_demo.data
 
 import android.content.Context
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
@@ -12,8 +13,14 @@ class NetworkInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
             .newBuilder()
-//            .addHeader("CLIENTAPIKEY", "f35d9d6a-ac79-48a6-9e26-f11872d08baf")
             .build()
+
+        // Log cURL with tag OKURL
+        val url = request.url.toString()
+        val headers = request.headers.toString()
+
+        Log.d("OKURL", "cURL: curl -X ${request.method} \"$url\" -H \"${headers}\"")
+
         return chain.proceed(request)
     }
 }

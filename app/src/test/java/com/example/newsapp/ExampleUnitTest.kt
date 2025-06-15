@@ -1,4 +1,4 @@
-package com.example.mvvm_demo
+package com.example.newsapp
 
 import org.junit.Test
 

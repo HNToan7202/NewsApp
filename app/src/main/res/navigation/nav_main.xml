@@ -6,22 +6,22 @@
 
     <fragment
         android:id="@+id/newsListFragment"
-        android:name="com.example.mvvm_demo.ui.news.NewsListFragment"
+        android:name="com.example.newsapp.ui.news.NewsListFragment"
         android:label="NewsListFragment">
         <argument
             android:name="newsItem"
-            app:argType="com.example.mvvm_demo.api.NewsListModel" />
+            app:argType="com.example.newsapp.api.NewsListModel" />
         <action
             android:id="@+id/action_newsListFragment_to_newsDetailFragment"
             app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailFragment"
-        android:name="com.example.mvvm_demo.ui.news.NewsDetailFragment"
+        android:name="com.example.newsapp.ui.news.NewsDetailFragment"
         android:label="NewsDetailFragment">
         <argument
             android:name="newsItem"
-            app:argType="com.example.mvvm_demo.api.NewsListModel" />
+            app:argType="com.example.newsapp.api.NewsListModel" />
     </fragment>
 
 </navigation>

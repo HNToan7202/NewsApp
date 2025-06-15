@@ -4,17 +4,16 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 
     alias(libs.plugins.hilt)
-    id("androidx.navigation.safeargs.kotlin")
     id("org.jetbrains.kotlin.kapt")
-
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
-    namespace = "com.example.mvvm_demo"
+    namespace = "com.example.newsapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.mvvm_demo"
+        applicationId = "com.example.newsapp"
         minSdk = 29
         //noinspection OldTargetApi
         targetSdk = 35
@@ -22,6 +21,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enable = true
     }
 
     flavorDimensions += "1"
@@ -64,9 +67,9 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
-        compose = true
         viewBinding = true
         buildConfig = true
+        dataBinding = true
     }
 }
 
@@ -130,5 +133,6 @@ dependencies {
     androidTestImplementation(libs.mockito.android)
     implementation(libs.androidx.paging.common.ktx)
     implementation(libs.androidx.room.paging)
+
 
 }

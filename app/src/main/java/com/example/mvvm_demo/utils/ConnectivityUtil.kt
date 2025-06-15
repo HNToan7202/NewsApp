@@ -1,4 +1,4 @@
-package com.example.mvvm_demo.commonUtil
+package com.example.mvvm_demo.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -1,6 +1,7 @@
 package com.example.mvvm_demo.common
 
-import com.example.mvvm_demo.BuildConfig
+import com.example.newsapp.BuildConfig
+
 
 val apiKey = BuildConfig.API_DEVELOPER_TOKEN
 val PAGE_SIZE = 20

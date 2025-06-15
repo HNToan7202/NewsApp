@@ -1,7 +1,5 @@
 package com.example.mvvm_demo.api
 
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow

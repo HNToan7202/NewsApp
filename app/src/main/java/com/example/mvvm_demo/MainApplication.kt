@@ -1,6 +1,7 @@
 package com.example.mvvm_demo
 
 import android.app.Application
+import com.example.newsapp.BuildConfig
 import com.facebook.stetho.Stetho
 import dagger.hilt.android.HiltAndroidApp
 

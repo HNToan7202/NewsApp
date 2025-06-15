@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.newsapp"
+    namespace = "com.example.mvvm_demo"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.newsapp"
+        applicationId = "com.example.mvvm_demo"
         minSdk = 29
         //noinspection OldTargetApi
         targetSdk = 35

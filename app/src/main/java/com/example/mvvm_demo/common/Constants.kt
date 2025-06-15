@@ -1,6 +1,6 @@
 package com.example.mvvm_demo.common
 
-import com.example.newsapp.BuildConfig
+import com.example.mvvm_demo.BuildConfig
 
 
 val apiKey = BuildConfig.API_DEVELOPER_TOKEN

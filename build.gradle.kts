@@ -13,6 +13,7 @@ plugins {
 buildscript {
     dependencies {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
+        classpath(libs.com.google.devtools.ksp.gradle.plugin) // Phiên bản KSP mới nhất
     }
 }
 
